@@ -1,10 +1,13 @@
 package main
 
 import (
+	"fmt"
 	"log"
 
 	"github.com/bwmarrin/discordgo"
 )
+
+type about PluginInfo
 
 type config struct {
 	Token  string `json:"token,omitempty"`
@@ -19,13 +22,14 @@ type PluginInfo struct {
 }
 
 //About this plugin
-func About() PluginInfo {
-	Info := PluginInfo{
+func (a about) About() {
+	about := PluginInfo{
 		PluginName: "discord",
 		PluginType: "service",
 		PluginDesc: "Service for Discord",
 	}
-	return Info
+
+	fmt.Println(about.PluginName)
 }
 
 //StartConnection is the starting command to set up and manage connections
